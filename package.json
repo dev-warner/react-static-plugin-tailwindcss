@@ -1,0 +1,29 @@
+{
+  "name": "react-static-plugin-tailwindcss",
+  "version": "0.0.1",
+  "description": "A React-Static plugin that adds tailwindcss into your postcss plugins",
+  "main": "node.api.js",
+  "scripts": {
+    "build": "babel src --out-dir .",
+    "watch": "yarn build --watch",
+    "test": "yarn format",
+    "format": "prettier src/**/*.js --write"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^1.1.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^1.1.2",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
+  },
+  "keywords": [
+    "react-static",
+    "tailwindcss",
+    "react",
+    "css"
+  ],
+  "author": "Joe Warner",
+  "license": "MIT"
+}
