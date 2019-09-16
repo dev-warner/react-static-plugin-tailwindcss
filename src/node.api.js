@@ -5,11 +5,17 @@ const getOneOf = ({ oneOf } = {}) => {
     return oneOf;
   }
 
-  return [];
+  return false;
 };
 
-export default _ => ({
+const defaultOptions = {
+  autoPrefixer: true,
+  cssInJs: false
+}
+
+export default (options = {}) => ({
   webpack: config => {
+    const opts = { ...defaultOptions, ...options };
     const { rules } = config.module;
     const { oneOf } = rules.find(getOneOf);
 
@@ -23,12 +29,25 @@ export default _ => ({
         postcssLoader.options.plugins
       ) {
         const plugins = postcssLoader.options.plugins;
+        const tailwind = [require("tailwindcss")]
+
+        if (opts.autoPrefixer) {
+          tailwind.push(require('autoprefixer'))
+        }
 
         Object.assign(postcssLoader.options, {
-          plugins: [require("tailwindcss"), ...(plugins.length ? plugins : [])]
+          plugins: [
+            ...tailwind, ...(plugins.length ? plugins : [])
+          ]
         });
 
         break;
+      }
+    }
+
+    if (opts.cssInJs) {
+      config.node = {
+        fs: 'empty'
       }
     }
 

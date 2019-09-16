@@ -10,13 +10,16 @@
     "format": "prettier src/**/*.js --write"
   },
   "peerDependencies": {
-    "tailwindcss": "^1.1.2"
+    "tailwindcss": "^1.1.2",
+    "tailwind.macro": "^1.0.0-alpha.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.6.0",
-    "tailwindcss": "^1.1.2"
+    "tailwindcss": "^1.1.2",
+    "babel-plugin-macros": "^2.6.1",
+    "babel-plugin-tailwind-components": "^0.5.10"
   },
   "keywords": [
     "react-static",
