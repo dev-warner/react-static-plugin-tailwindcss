@@ -3,20 +3,27 @@
 [![npm version](https://badge.fury.io/js/react-static-plugin-tailwindcss.svg)](https://badge.fury.io/js/react-static-plugin-tailwindcss)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
-
 ## Installation
+
 In an existing react-static site run:
 
+### Tailwind v2
+
 ```bash
-$ yarn add react-static-plugin-tailwindcss -D
+$ yarn add react-static-plugin-tailwindcss tailwindcss@npm:@tailwindcss/postcss7-compat -D
+```
+
+### Tailwind v1
+
+```bash
+$ yarn add react-static-plugin-tailwindcss tailwindcss@1.9.6 -D
 ```
 
 Then add the plugin to your static.config.js:
 
 ```js
 export default {
-  plugins: ["react-static-plugin-tailwindcss"]
+  plugins: ["react-static-plugin-tailwindcss"],
 };
 ```
 
@@ -37,30 +44,36 @@ yarn add tailwind.macro@next
 ```
 
 static.config.js
+
 ```js
 export default {
   plugins: [
-    ["react-static-plugin-tailwindcss", {
-      cssInJs: true
-    }]
-  ]
+    [
+      "react-static-plugin-tailwindcss",
+      {
+        cssInJs: true,
+      },
+    ],
+  ],
 };
 ```
 
 Create a babel-plugin-macros.config.js file
+
 ```js
 module.exports = {
-    tailwind: {
-        config: './tailwind.config.js',
-        format: 'auto'
-    }
-}
+  tailwind: {
+    config: "./tailwind.config.js",
+    format: "auto",
+  },
+};
 ```
 
 Now you can use the tw macro inside styled components
+
 ```js
 import tw from "tailwind.macro";
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Header = styled.h1`
   ${tw`text-4xl font-bold text-center text-blue-500`}
@@ -74,9 +87,12 @@ If you already handle auto prefixer or dont want to use it
 ```js
 export default {
   plugins: [
-    ["react-static-plugin-tailwindcss", {
-      autoPrefixer: false
-    }]
-  ]
+    [
+      "react-static-plugin-tailwindcss",
+      {
+        autoPrefixer: false,
+      },
+    ],
+  ],
 };
 ```
